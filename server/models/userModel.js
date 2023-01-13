@@ -21,15 +21,6 @@ const userSchema = mongoose.Schema({
         // require: [true, 'photo is required'],
         default: '',
     },
-    phone: {
-        type: String,
-        default: '+91',
-    },
-    bio: {
-        type: String,
-        // maxLength: [100, 'bio must contain 100 characters'],
-        default: 'bio',
-    },
     password: {
         type: String,
         require: [true, 'password is required'],

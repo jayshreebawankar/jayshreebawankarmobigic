@@ -12,7 +12,7 @@ const generateToken = (id) => {
 
 const registerUser = async (req, res, next) => {
     try {
-        const { name, email, password, photo, phone, bio } = req.body;
+        const { name, email, password, photo } = req.body;
 
         if (!name || !email || !password) {
             res.status(400);
@@ -35,9 +35,7 @@ const registerUser = async (req, res, next) => {
             name,
             email,
             password,
-            photo,
-            phone,
-            bio
+            photo
         });
 
         //Generate Token
@@ -53,8 +51,8 @@ const registerUser = async (req, res, next) => {
         });
 
         if (user) {
-            const { _id, name, email, photo, phone, bio } = user;
-            res.status(201).json({ _id, name, email, photo, phone, bio, token });
+            const { _id, name, email, photo } = user;
+            res.status(201).json({ _id, name, email, photo, token });
         } else {
             res.status(400).json('Kindly fill up all data');
         }
@@ -100,8 +98,8 @@ const loginUser = asyncHandler(async (req, res, next) => {
 
     //send response
     if (user && checkPassword) {
-        const { _id, name, email, photo, phone, bio } = user;
-        res.status(200).json({ _id, name, email, photo, phone, bio, token });
+        const { _id, name, email, photo } = user;
+        res.status(200).json({ _id, name, email, photo, token });
     } else {
         res.status(400).json('Something went Wrong');
     }
@@ -130,8 +128,8 @@ const getUserById = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.user._id);
 
     if (user) {
-        const { _id, name, email, photo, phone, bio } = user;
-        res.status(201).json({ _id, name, email, photo, phone, bio });
+        const { _id, name, email, photo } = user;
+        res.status(201).json({ _id, name, email, photo });
     } else {
         res.status(400).json('User not found');
     }
@@ -170,13 +168,11 @@ const loginStatus = asyncHandler(async (req, res, next) => {
 const updateUser = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.user._id);
     if (user) {
-        const { name, email, photo, phone, bio } = user;
+        const { name, email, photo } = user;
         user.name = req.body.name || name;
         user.email = req.body.email || email;
         user.photo = req.body.photo || photo;
-        user.phone = req.body.phone || phone;
-        user.bio = req.body.bio || bio;
-
+    
         // let user1 = new User(req.body)
         // const updatedUser = await user1.save(req.body);
 
@@ -184,9 +180,7 @@ const updateUser = asyncHandler(async (req, res, next) => {
         res.status(200).json({
             name: updatedUser.name,
             email: updatedUser.email,
-            photo: updatedUser.photo,
-            phone: updatedUser.phone,
-            bio: updatedUser.bio,
+            photo: updatedUser.photo
         })
     } else {
         res.status(400);
