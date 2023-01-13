@@ -1,0 +1,94 @@
+.auth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 4rem;
+    height: 100vh;
+}
+
+.auth>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* autheticate left side css */
+
+.auth-left{
+    gap: 2rem;
+}
+
+.auth-left >img{
+    height: 4rem;
+    width: 4rem;
+}
+
+.web-name >h1{
+    font-size: 3rem;
+    background-color: red;
+
+    /* create the gradient */
+    background-image: var(--buttonBg);
+
+    /* sets the background size and repeat properties */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* use the text as a mask for the background */
+    /* This will show the gradient as a text color rather than element bg */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.web-name>h6{
+    font-size: 0.85rem;
+}
+
+/* auth-right */
+
+.infoForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 15rem;
+}
+
+.infoInput{
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: var(--inputColor);
+    flex: 1;
+}
+
+.infoForm >div{
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    width:100%;
+}
+
+.signupBtn{
+    height: 2rem;
+    width: 7rem;
+    align-self: flex-end;
+}
+
+.authForm{
+    background-color: var(--cardColor);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.authForm>div{
+    width: 100%;
+    align-items: center;    
+    justify-content: center;
+}
